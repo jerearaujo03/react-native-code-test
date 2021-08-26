@@ -1,8 +1,8 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 
 const App = () => {
-  return <View style={styles.container}></View>;
+  return <View style={styles.container} />;
 };
 
 const styles = StyleSheet.create({
