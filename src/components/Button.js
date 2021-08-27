@@ -9,6 +9,7 @@ const Button = ({
   loading = false,
   disabled = false,
   onPress = () => {},
+  style,
   ...rest
 }) => {
   const handleButtonPress = () => {
@@ -21,9 +22,10 @@ const Button = ({
   return (
     <Pressable
       style={({pressed}) => [
+        styles.button,
+        {...style},
         {backgroundColor: pressed ? colors.primaryLight : colors.primary},
         disabled && {backgroundColor: colors.gray},
-        styles.button,
       ]}
       onPress={handleButtonPress}
       {...rest}>

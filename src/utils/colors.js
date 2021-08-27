@@ -6,6 +6,7 @@ const colors = {
   white: '#FFFFFF',
   gray: '#828282',
   darkGray: '#4D4D4D',
+  black: '#000000',
 
   red: '#F70100',
 };
