@@ -1,5 +1,5 @@
 import React, {useLayoutEffect} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 
 import {signOut} from '../redux/auth';
@@ -7,6 +7,9 @@ import {signOut} from '../redux/auth';
 import Text from '../components/Text';
 import {StyleSheet} from 'react-native';
 import colors from '../utils/colors';
+import PeopleList from '../components/PeopleList';
+import ScreenContainer from '../components/ScreenContainer';
+import FAB from '../components/FAB';
 
 const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -22,7 +25,16 @@ const HomeScreen = ({navigation}) => {
       ),
     });
   }, [dispatch, navigation]);
-  return <Text>Home</Text>;
+
+  return (
+    <ScreenContainer style={styles.container}>
+      <PeopleList />
+      <FAB
+        text="Add Person"
+        onPress={() => navigation.navigate('AddPersonScreen')}
+      />
+    </ScreenContainer>
+  );
 };
 
 const styles = StyleSheet.create({
