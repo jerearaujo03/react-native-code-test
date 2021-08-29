@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Pressable, View} from 'react-native';
 import {DateTimePickerModal} from 'react-native-modal-datetime-picker';
 import TextInput from './TextInput';
 
@@ -26,13 +27,15 @@ const DateInput = ({
 
   return (
     <>
-      <TextInput
-        label={label}
-        value={displayValue}
-        placeholder={placeholder}
-        onPressOut={showDatePicker}
-        editable={false}
-      />
+      <Pressable onPress={showDatePicker}>
+        <View pointerEvents="none">
+          <TextInput
+            label={label}
+            value={displayValue}
+            placeholder={placeholder}
+          />
+        </View>
+      </Pressable>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="date"

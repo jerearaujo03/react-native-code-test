@@ -4,6 +4,7 @@ const colors = {
   primaryLight: '#1a68dd',
 
   white: '#FFFFFF',
+  lightGray: '#b4b4b4',
   gray: '#828282',
   darkGray: '#4D4D4D',
   black: '#000000',

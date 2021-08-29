@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import {DateTime} from 'luxon';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
 import colors from '../utils/colors';
 import {genders} from '../utils/utils';
@@ -40,12 +41,30 @@ const AddPersonScreen = () => {
         <Spacer />
         <DateInput
           onValueChange={setBirth}
-          displayValue={DateTime.fromJSDate(birth).toLocaleString(
-            DateTime.DATE_FULL,
-          )}
+          displayValue={
+            birth
+              ? DateTime.fromJSDate(birth).toLocaleString(DateTime.DATE_FULL)
+              : null
+          }
           value={birth}
           label="Date of birth"
           placeholder="Select your date of birth..."
+        />
+        <Spacer />
+        {/* <GooglePlacesAutocomplete
+          placeholder="Search"
+          onPress={(data, details = null) => {
+            // 'details' is provided when fetchDetails = true
+            console.log(data, details);
+          }}
+          query={{
+            key: 'AIzaSyBdcSdtTT4OAst0cFvflrXV4Jv4n_mj0_A',
+            language: 'en',
+          }}
+        /> */}
+        <TextInput
+          label="Address"
+          placeholder="493 9th AveNew York, NY 10018, EE. UU."
         />
       </View>
     </ScrollView>

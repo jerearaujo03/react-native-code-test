@@ -15,7 +15,7 @@ const TextInput = ({label = '', error = false, ...rest}) => {
           error && {borderColor: colors.red, color: colors.red},
           isFocused && {borderColor: colors.primary},
         ]}
-        placeholderTextColor={colors.gray}
+        placeholderTextColor={colors.lightGray}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         {...rest}
