@@ -1,16 +1,20 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
+import {DateTime} from 'luxon';
 
 import colors from '../utils/colors';
 import {genders} from '../utils/utils';
 import TextInput from '../components/TextInput';
 import Spacer from '../components/Spacer';
 import Picker from '../components/Picker';
+import DateInput from '../components/DateInput';
 
 const AddPersonScreen = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [gender, setGender] = useState();
+  const [date, setDate] = useState(new Date());
+  const [birth, setBirth] = useState();
 
   return (
     <ScrollView>
@@ -32,6 +36,16 @@ const AddPersonScreen = () => {
           items={genders}
           label="Gender"
           placeholder="Select your gender..."
+        />
+        <Spacer />
+        <DateInput
+          onValueChange={setBirth}
+          displayValue={DateTime.fromJSDate(birth).toLocaleString(
+            DateTime.DATE_FULL,
+          )}
+          value={birth}
+          label="Date of birth"
+          placeholder="Select your date of birth..."
         />
       </View>
     </ScrollView>

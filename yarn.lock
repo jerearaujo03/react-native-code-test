@@ -1149,6 +1149,13 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
+"@react-native-community/datetimepicker@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-3.5.2.tgz#8e6feb30f2620e5abdf565d5fe74c0c04edcf6ae"
+  integrity sha512-TWRuAtr/DnrEcRewqvXMLea2oB+YF+SbtuYLHguALLxNJQLl/RFB7aTNZeF+OoH75zKFqtXECXV1/uxQUpA+sg==
+  dependencies:
+    invariant "^2.2.4"
+
 "@react-native-community/eslint-config@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-config/-/eslint-config-3.0.0.tgz#58e839319e376d49505cc8ac6c373a441f5dddd7"
@@ -4584,6 +4591,11 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+luxon@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-2.0.2.tgz#11f2cd4a11655fdf92e076b5782d7ede5bcdd133"
+  integrity sha512-ZRioYLCgRHrtTORaZX1mx+jtxKtKuI5ZDvHNAmqpUzGqSrR+tL4FVLn/CUGMA3h0+AKD1MAxGI5GnCqR5txNqg==
+
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -5571,11 +5583,6 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-date-picker@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-3.4.2.tgz#191f810e66b3458521268320bdd8682c29f3e90b"
-  integrity sha512-OMDrrYc7foM6oo0OyrTdEHBY4JaIto7gn6FVzyQvyVsrzPK1r43H7c9ndfDlMdA3NoJtKms1REGUi5Gi3o3wlA==
-
 react-native-flipper@^0.104.0:
   version "0.104.0"
   resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.104.0.tgz#f380a6b1c17f3d30dcefcb7767735beec16ede76"
@@ -5590,6 +5597,13 @@ react-native-gesture-handler@^1.10.3:
     fbjs "^3.0.0"
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
+    prop-types "^15.7.2"
+
+react-native-modal-datetime-picker@^10.2.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-10.2.0.tgz#3ec5c299e8bdc9fd2ec0a1a6642a459c408b910f"
+  integrity sha512-eMQb3EPqHx47WrlLPTrXvmLZDwGwGH//WTWiQBUvJ+6ehDeuTjIn8/v/ANv8wxCCrt4NeHem8FQY3Z5fa4fRgQ==
+  dependencies:
     prop-types "^15.7.2"
 
 react-native-picker-select@^8.0.4:
