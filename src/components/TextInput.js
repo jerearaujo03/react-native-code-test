@@ -3,7 +3,7 @@ import {TextInput as RNTextInput, StyleSheet} from 'react-native';
 import Text from './Text';
 import colors from '../utils/colors';
 
-const TextInput = ({label = '', error = false, ...rest}) => {
+const TextInput = ({label = '', error = false, onChangeText, ...rest}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -18,6 +18,7 @@ const TextInput = ({label = '', error = false, ...rest}) => {
         placeholderTextColor={colors.lightGray}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        onChangeText={onChangeText}
         {...rest}
       />
     </>

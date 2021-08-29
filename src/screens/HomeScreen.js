@@ -10,6 +10,7 @@ import colors from '../utils/colors';
 import PeopleList from '../components/PeopleList';
 import ScreenContainer from '../components/ScreenContainer';
 import FAB from '../components/FAB';
+import Spacer from '../components/Spacer';
 
 const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <ScreenContainer style={styles.container}>
       <PeopleList />
+
       <FAB
         text="Add Person"
         onPress={() => navigation.navigate('AddPersonScreen')}
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
   },
   signOutText: {
     color: colors.primary,
+    fontSize: 17,
     fontWeight: 'bold',
   },
 });

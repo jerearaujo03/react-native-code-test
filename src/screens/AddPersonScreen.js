@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {DateTime} from 'luxon';
+import {useDispatch} from 'react-redux';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 import colors from '../utils/colors';
 import {genders} from '../utils/utils';
@@ -18,19 +20,32 @@ import Picker from '../components/Picker';
 import DateInput from '../components/DateInput';
 import AddressModalInput from '../components/AddressModalInput';
 import Text from '../components/Text';
-import {launchImageLibrary} from 'react-native-image-picker';
 import Button from '../components/Button';
+import {addPerson} from '../redux/people';
 
-const AddPersonScreen = () => {
+const AddPersonScreen = ({navigation}) => {
   const [image, setImage] = useState();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState();
   const [birth, setBirth] = useState();
   const [address, setAddress] = useState();
 
-  const handleSave = () => {
+  const dispatch = useDispatch();
+
+  const handleSave = async () => {
     // TODO validate required fields and submit
+    await dispatch(
+      addPerson({
+        image,
+        firstName,
+        lastName,
+        gender,
+        birth: DateTime.fromJSDate(birth).toISODate(),
+        address: address?.description,
+      }),
+    );
+    navigation.goBack();
   };
 
   return (
@@ -39,13 +54,13 @@ const AddPersonScreen = () => {
         <ImagePicker value={image} onValueChange={setImage} />
 
         <TextInput
-          onTextChange={setFirstName}
+          onChangeText={setFirstName}
           label="First Name"
           placeholder="John"
         />
         <Spacer />
         <TextInput
-          onTextChange={setLastName}
+          onChangeText={setLastName}
           label="Last Name"
           placeholder="Smith"
         />

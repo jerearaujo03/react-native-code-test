@@ -1,3 +1,4 @@
+import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
 
 const mockUser = {
@@ -24,25 +25,32 @@ export const signIn = (username, password) => {
 export const addPerson = ({
   firstName,
   lastName,
-  picture,
+  image,
   gender,
-  birthday,
+  birth,
   address,
 }) => {
   return new Promise(async (resolve, reject) => {
     // simulate api call
     await timeout(1000);
 
-    resolve({
-      person: {
-        id: uuidv4(),
-        firstName,
-        lastName,
-        picture,
-        gender,
-        birthday,
-        address,
-      },
-    });
+    try {
+      const id = uuidv4();
+
+      resolve({
+        person: {
+          id,
+          firstName,
+          lastName,
+          image,
+          gender,
+          birth,
+          address,
+        },
+      });
+    } catch (e) {
+      reject('An error has occurred');
+      console.log(e);
+    }
   });
 };
