@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import {DateTime} from 'luxon';
-import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
 import colors from '../utils/colors';
 import {genders} from '../utils/utils';
@@ -9,6 +8,7 @@ import TextInput from '../components/TextInput';
 import Spacer from '../components/Spacer';
 import Picker from '../components/Picker';
 import DateInput from '../components/DateInput';
+import AddressModalInput from '../components/AddressModalInput';
 
 const AddPersonScreen = () => {
   const [firstName, setFirstName] = useState();
@@ -16,6 +16,7 @@ const AddPersonScreen = () => {
   const [gender, setGender] = useState();
   const [date, setDate] = useState(new Date());
   const [birth, setBirth] = useState();
+  const [address, setAddress] = useState();
 
   return (
     <ScrollView>
@@ -51,20 +52,11 @@ const AddPersonScreen = () => {
           placeholder="Select your date of birth..."
         />
         <Spacer />
-        {/* <GooglePlacesAutocomplete
-          placeholder="Search"
-          onPress={(data, details = null) => {
-            // 'details' is provided when fetchDetails = true
-            console.log(data, details);
-          }}
-          query={{
-            key: 'AIzaSyBdcSdtTT4OAst0cFvflrXV4Jv4n_mj0_A',
-            language: 'en',
-          }}
-        /> */}
-        <TextInput
-          label="Address"
+
+        <AddressModalInput
           placeholder="493 9th AveNew York, NY 10018, EE. UU."
+          onValueChange={setAddress}
+          displayValue={address?.description || ''}
         />
       </View>
     </ScrollView>
