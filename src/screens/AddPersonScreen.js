@@ -1,26 +1,43 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {DateTime} from 'luxon';
 
 import colors from '../utils/colors';
 import {genders} from '../utils/utils';
+import picIcon from '../assets/images/pic-icon.png';
+
 import TextInput from '../components/TextInput';
 import Spacer from '../components/Spacer';
 import Picker from '../components/Picker';
 import DateInput from '../components/DateInput';
 import AddressModalInput from '../components/AddressModalInput';
+import Text from '../components/Text';
+import {launchImageLibrary} from 'react-native-image-picker';
+import Button from '../components/Button';
 
 const AddPersonScreen = () => {
+  const [image, setImage] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [gender, setGender] = useState();
-  const [date, setDate] = useState(new Date());
   const [birth, setBirth] = useState();
   const [address, setAddress] = useState();
+
+  const handleSave = () => {
+    // TODO validate required fields and submit
+  };
 
   return (
     <ScrollView>
       <View style={styles.card}>
+        <ImagePicker value={image} onValueChange={setImage} />
+
         <TextInput
           onTextChange={setFirstName}
           label="First Name"
@@ -58,8 +75,37 @@ const AddPersonScreen = () => {
           onValueChange={setAddress}
           displayValue={address?.description || ''}
         />
+
+        <Spacer vertical={20} />
+
+        <Button text="Save" onPress={handleSave} />
       </View>
     </ScrollView>
+  );
+};
+
+const ImagePicker = ({value, onValueChange}) => {
+  const onImageSelectPress = () => {
+    launchImageLibrary({mediaType: 'photo'}, data => {
+      onValueChange(data.assets?.[0]?.uri);
+    });
+  };
+
+  return (
+    <View style={styles.imagePickerContainer}>
+      <TouchableOpacity
+        onPress={onImageSelectPress}
+        style={styles.imagePickerUploadButton}>
+        {value ? (
+          <Image source={{uri: value}} style={styles.imagePickerImage} />
+        ) : (
+          <>
+            <Image source={picIcon} style={styles.imagePickerIcon} />
+            <Text style={styles.imagePickerText}>Select an image</Text>
+          </>
+        )}
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -78,6 +124,37 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
+  },
+  imagePickerContainer: {
+    alignItems: 'center',
+    flex: 0,
+    height: 200,
+  },
+  imagePickerImage: {
+    borderRadius: 100,
+    height: 180,
+    resizeMode: 'cover',
+    width: 180,
+  },
+  imagePickerIcon: {
+    height: 35,
+    marginBottom: 10,
+    tintColor: colors.white,
+    width: 35,
+  },
+  imagePickerUploadButton: {
+    alignItems: 'center',
+    backgroundColor: colors.lightGray,
+    borderRadius: 100,
+    height: 180,
+    justifyContent: 'center',
+    padding: 10,
+    width: 180,
+  },
+  imagePickerText: {
+    color: colors.white,
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
