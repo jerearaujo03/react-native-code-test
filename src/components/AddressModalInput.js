@@ -22,6 +22,7 @@ const AddressModalInput = ({
   placeholder,
   onValueChange,
   displayValue,
+  error,
 }) => {
   const [addressModalVisible, setAddressModalVisible] = useState(false);
   const googlePlacesAutocompleteInput = useRef();
@@ -49,6 +50,7 @@ const AddressModalInput = ({
             placeholder={placeholder}
             value={displayValue}
             selection={{start: 0}} // fix android, show overflowing text from the start
+            error={error}
           />
         </View>
       </Pressable>

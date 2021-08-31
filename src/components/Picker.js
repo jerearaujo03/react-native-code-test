@@ -9,6 +9,8 @@ const Picker = ({
   items,
   label,
   placeholder = 'Select an item...',
+  value,
+  error = false,
 }) => {
   const placeholderObject = {
     label: placeholder,
@@ -19,11 +21,14 @@ const Picker = ({
     <>
       <Text>{label}</Text>
       <RNPickerSelect
-        onValueChange={onValueChange}
+        onValueChange={v => onValueChange(v || '')}
         items={items}
-        textInputProps={styles.picker}
+        textInputProps={
+          error ? {...styles.picker, borderColor: colors.red} : styles.picker
+        }
         useNativeAndroidPickerStyle={false}
         placeholder={placeholderObject}
+        value={value}
       />
     </>
   );
@@ -32,6 +37,13 @@ const Picker = ({
 const styles = StyleSheet.create({
   picker: {
     borderColor: colors.darkGray,
+    borderRadius: 5,
+    borderBottomWidth: 1,
+    height: 40,
+    paddingHorizontal: 5,
+  },
+  pickerError: {
+    borderColor: colors.red,
     borderRadius: 5,
     borderBottomWidth: 1,
     height: 40,

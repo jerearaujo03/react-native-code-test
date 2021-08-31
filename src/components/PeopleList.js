@@ -57,7 +57,11 @@ const Person = ({person, onDelete, onEdit}) => {
 
   return (
     <View style={styles.personContainer}>
-      <Image source={{uri: person.image}} style={styles.personImage} />
+      {person.image ? (
+        <Image source={{uri: person.image}} style={styles.personImage} />
+      ) : (
+        <View style={styles.personImage} />
+      )}
       <View style={styles.personInfo}>
         <Text style={styles.personName}>
           <Text>{person.firstName}</Text>
@@ -65,7 +69,7 @@ const Person = ({person, onDelete, onEdit}) => {
         </Text>
         <Text>{genderLabel}</Text>
         <Text>{birthLabel}</Text>
-        <Text>{person.address}</Text>
+        <Text>{person.address?.description}</Text>
       </View>
       <View style={styles.actionButtonsContainer}>
         <TouchableOpacity onPress={() => onEdit(person.id)}>
@@ -114,6 +118,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   personImage: {
+    backgroundColor: colors.lightGray,
     borderRadius: 100,
     height: 70,
     resizeMode: 'cover',

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Pressable, View} from 'react-native';
 import {DateTimePickerModal} from 'react-native-modal-datetime-picker';
 import TextInput from './TextInput';
+import {DateTime} from 'luxon';
 
 const DateInput = ({
   label,
@@ -9,6 +10,7 @@ const DateInput = ({
   value,
   placeholder,
   onValueChange,
+  error,
 }) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
@@ -21,7 +23,7 @@ const DateInput = ({
   };
 
   const handleConfirm = date => {
-    onValueChange(date);
+    onValueChange(DateTime.fromJSDate(date).toISODate());
     hideDatePicker();
   };
 
@@ -33,6 +35,7 @@ const DateInput = ({
             label={label}
             value={displayValue}
             placeholder={placeholder}
+            error={error}
           />
         </View>
       </Pressable>
@@ -41,7 +44,7 @@ const DateInput = ({
         mode="date"
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
-        date={value}
+        date={value ? DateTime.fromISO(value).toJSDate() : new Date()}
       />
     </>
   );
