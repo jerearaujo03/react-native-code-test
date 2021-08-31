@@ -4,6 +4,9 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import store from './redux/store';
 import AppNavigator from './navigators/AppNavigator';
+import {LogBox} from 'react-native';
+
+LogBox.ignoreAllLogs();
 
 const App = () => {
   return (

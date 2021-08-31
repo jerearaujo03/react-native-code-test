@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeScreen from '../screens/HomeScreen';
 import AddPersonScreen from '../screens/AddPersonScreen';
+import EditPersonScreen from '../screens/EditPersonScreen';
 
 const MainStack = createStackNavigator();
 
@@ -25,6 +26,13 @@ const MainNavigator = () => {
         component={AddPersonScreen}
         options={{
           title: 'Add Person',
+        }}
+      />
+      <MainStack.Screen
+        name="EditPersonScreen"
+        component={EditPersonScreen}
+        options={{
+          title: 'Edit Person',
         }}
       />
     </MainStack.Navigator>

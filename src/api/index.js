@@ -54,3 +54,35 @@ export const addPerson = ({
     }
   });
 };
+
+export const updatePerson = ({
+  id,
+  firstName,
+  lastName,
+  image,
+  gender,
+  birth,
+  address,
+}) => {
+  return new Promise(async (resolve, reject) => {
+    // simulate api call
+    await timeout(1000);
+
+    try {
+      resolve({
+        person: {
+          id,
+          firstName,
+          lastName,
+          image,
+          gender,
+          birth,
+          address,
+        },
+      });
+    } catch (e) {
+      reject('An error has occurred');
+      console.log(e);
+    }
+  });
+};

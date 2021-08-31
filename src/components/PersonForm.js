@@ -35,6 +35,7 @@ const PersonForm = ({
   birth = '',
   address = {},
   onSubmit,
+  pending,
 }) => {
   return (
     <Formik
@@ -71,7 +72,7 @@ const PersonForm = ({
               defaultValue={values.firstName}
               error={showErrors && errors.firstName}
             />
-            {showErrors && (
+            {showErrors && errors.firstName && (
               <Text style={styles.errorText}>{errors.firstName}</Text>
             )}
 
@@ -83,7 +84,7 @@ const PersonForm = ({
               defaultValue={values.lastName}
               error={showErrors && errors.firstName}
             />
-            {showErrors && (
+            {showErrors && errors.lastName && (
               <Text style={styles.errorText}>{errors.lastName}</Text>
             )}
 
@@ -96,7 +97,7 @@ const PersonForm = ({
               value={values.gender}
               error={showErrors && errors.gender}
             />
-            {showErrors && (
+            {showErrors && errors.gender && (
               <Text style={styles.errorText}>{errors.gender}</Text>
             )}
 
@@ -115,7 +116,9 @@ const PersonForm = ({
               placeholder="Select your date of birth..."
               error={showErrors && errors.birth}
             />
-            {showErrors && <Text style={styles.errorText}>{errors.birth}</Text>}
+            {showErrors && errors.birth && (
+              <Text style={styles.errorText}>{errors.birth}</Text>
+            )}
 
             <Spacer />
             <AddressModalInput
@@ -124,7 +127,7 @@ const PersonForm = ({
               displayValue={values.address?.description || ''}
               error={showErrors && errors.address?.description}
             />
-            {showErrors && (
+            {showErrors && errors.address?.description && (
               <Text style={styles.errorText}>
                 {errors.address?.description}
               </Text>
@@ -132,7 +135,11 @@ const PersonForm = ({
 
             <Spacer vertical={20} />
 
-            <Button text={submitLabel} onPress={handleSubmit} />
+            <Button
+              text={submitLabel}
+              onPress={handleSubmit}
+              loading={pending}
+            />
           </View>
         );
       }}

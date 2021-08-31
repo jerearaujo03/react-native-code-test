@@ -7,8 +7,9 @@ import {
   FlatList,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {getGenderLabel} from '../utils/utils';
+import {useNavigation} from '@react-navigation/native';
 
+import {getGenderLabel} from '../utils/utils';
 import deleteIcon from '../assets/images/delete-icon.png';
 import editIcon from '../assets/images/edit-icon.png';
 
@@ -22,12 +23,14 @@ const PeopleList = () => {
   const dispatch = useDispatch();
   const people = useSelector(state => state.people.people);
 
+  const navigation = useNavigation();
+
   const handleDelete = personId => {
     dispatch(deletePerson(personId));
   };
 
   const handleEdit = personId => {
-    alert(`editing ${personId}`);
+    navigation.navigate('EditPersonScreen', {id: personId});
   };
 
   return (
