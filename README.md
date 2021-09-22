@@ -1,4 +1,4 @@
-# GoGrow - React Native Code Test
+React Native Code Test
 
 The purpose of this exercise is to give you a chance to demonstrate your
 problem solving and coding skills. The exercise is split into two sections:
